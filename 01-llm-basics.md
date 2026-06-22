@@ -59,13 +59,61 @@ Here's how it worked:
 
 **Result:** 20% reduction in call handling effort.
 
+
+## Choosing the Right Model
+
+Not all LLMs are equal — and choosing the wrong one can create cost, compliance, and operational problems down the line.
+
+### Open Source vs Closed Source
+
+| | Open Source | Closed Source |
+|---|---|---|
+| **Examples** | Llama (Meta), Mistral, Falcon | GPT-4 (OpenAI), Claude (Anthropic), Gemini (Google) |
+| **Cost** | Lower — you run it yourself | Pay per API call — costs scale with usage |
+| **Control** | Full — hosted in your own environment | Limited — model runs on vendor infrastructure |
+| **Compliance** | Easier — data never leaves your environment | Requires careful vendor assessment |
+| **Capability** | Catching up fast | Generally stronger out of the box |
+| **Maintenance** | Your team manages it | Vendor manages updates |
+
+### Key Factors for PMs
+
+**1. Cost**
+Closed source models charge per token — every word in and every word out costs money. At scale (millions of users, thousands of calls per day) this adds up fast. Open source models have upfront infrastructure costs but lower per-call cost at scale.
+
+> Rule of thumb: prototype with closed source, evaluate open source at scale.
+
+**2. Compliance**
+In regulated industries, this is often the deciding factor:
+
+- **PII must never be sent to an external LLM** — strip all personal data before any prompt leaves your environment
+- **Data residency** — where is the data processed and stored? Some regulations require data to stay in-country
+- **Audit trails** — can you log every input and output for regulatory review?
+- **Regulatory approval** — AI systems in financial services often require formal sign-off before deployment; factor this into your roadmap
+
+> Using a vendor like Azure OpenAI or AWS Bedrock can help — they provide closed source model capability (GPT-4, Claude) within your own cloud environment, satisfying many compliance requirements.
+
+**3. Latency**
+Latency is the time between sending a prompt and receiving a response. This matters enormously for user-facing products.
+
+- A fraud decision that takes 5 seconds will frustrate users and break the experience
+- Smaller, faster models are often better for real-time decisions even if slightly less capable
+- Larger models are fine for background tasks (summarisation, report generation) where speed is less critical
+
+**4. Vendor Lock-in**
+When you build entirely on one provider's model (e.g. GPT-4), you depend on their pricing, availability, and roadmap. If they raise prices or deprecate a model, your product is affected.
+
+Mitigation strategies:
+- Abstract your AI layer so you can swap models without rewriting your product
+- Evaluate at least 2 models before committing
+- Monitor the open source landscape — the gap with closed source is closing fast
+
 ---
 
 ## Key Takeaway for PMs
 
-LLMs are powerful but they are **prediction engines**, not fact engines. They generate what's *likely* to be correct based on training data — which is why guardrails, system instructions, and evaluation frameworks matter as much as the model itself.
+LLMs are prediction engines, not fact engines. They generate what's *likely* to be correct — which is why guardrails, system instructions, and evaluation frameworks matter as much as the model itself.
 
-Choosing the right model, the right prompt, and the right infrastructure is the product decision — not just an engineering one.
+Choosing the right model is a product decision, not just an engineering one.
 
 ---
 
