@@ -1,5 +1,7 @@
 LLM / Transformer        → the brain — understands and generates language
+
 Embedding Model          → the translator — converts text to numbers
+
 Vector DB                → the memory — stores those numbers for retrieval
 
 
