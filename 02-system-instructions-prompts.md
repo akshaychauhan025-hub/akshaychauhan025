@@ -110,9 +110,9 @@ Just like A/B testing in product, **A/B prompting** means testing two different 
 
 **Example — Call Summarisation:**
 
-## Prompt A: Summarise the call in 7 bullet points covering issue, actions, and next steps.
+Prompt A: Summarise the call in 7 bullet points covering issue, actions, and next steps.
 
-## Prompt B: Summarise the call in 3 sections: Problem, What Was Done, Next Steps. Be concise. Max 2 sentences per section.
+Prompt B: Summarise the call in 3 sections: Problem, What Was Done, Next Steps. Be concise. Max 2 sentences per section.
 
 Both produce a summary — but tone, structure, and usefulness may differ significantly.
 
