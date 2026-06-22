@@ -41,7 +41,7 @@ Response (text)
 
 ---
 
-## Real Example — Call & Notes Summarisation at Financial services company 
+## Real Example — Call & Notes Summarisation at financial services company 
 
 **The problem:** After every customer service call, agents had to manually write call summaries — time-consuming, inconsistent, and a significant source of handling effort.
 
