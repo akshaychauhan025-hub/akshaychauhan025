@@ -146,6 +146,176 @@ Think of it as a reference library the model can look things up in
 Parametric Knowledge   → what the model already knows (training)
 Context Window         → what you tell it right now (prompt)
 Vector DB              → what it can look up from your data (RAG)
+
+---
+
+## How the Decoder Predicts the Next Token
+
+This is where the magic actually happens — and understanding this 
+deeply separates good AI PMs from great ones.
+
+### The Knowledge Lives in the Parameters
+
+During training, the model processed billions of sentences from 
+books, internet, Wikipedia, research papers, and more.
+
+For every word — it learned to predict what comes next.
+
+Read sentence → predict next word
+Get it wrong  → adjust parameters
+Get it right  → reinforce parameters
+Repeat this trillions of times
+
+↓
+
+Parameters now contain compressed knowledge of language, facts, reasoning, and relationship
+
+GPT-4 has approximately **1.7 trillion parameters** — each one a 
+number, tuned during training to capture a pattern in language.
+
+> Think of parameters as billions of dials — each adjusted during 
+> training to encode how language, facts, and reasoning work.
+
+---
+
+### During Inference — What Actually Happens
+
+When you send a prompt, the decoder doesn't look anything up. 
+It calculates:
+
+Your prompt arrives
+
+↓
+
+Transformer processes all tokens using Attention
+
+↓
+
+For each position the model asks:
+
+"Given everything before this token,
+
+what is the most likely next token?"
+
+↓
+
+Searches its parameters
+
+(everything learned during training)
+
+↓
+
+Calculates probability score
+
+for every possible next token
+
+↓
+
+Picks the highest probability token
+
+↓
+
+Appends it to the sequence
+
+↓
+
+Repeats until response is complete
+
+---
+
+### Probability in Action
+
+Input: *"The customer called to report a fraud"*
+
+Next token probabilities:
+
+"transaction"  → 34%
+
+"dispute"      → 28%
+
+"claim"        → 19%
+
+"case"         → 12%
+
+other tokens   → 7%
+
+
+Model picks *"transaction"* — appends it — then calculates 
+probabilities for the token after that — and so on until 
+the full response is generated.
+
+---
+
+### Temperature — Controlling Randomness
+
+Temperature controls how the model chooses between 
+probable tokens:
+
+| Temperature | Behaviour | Use Case |
+|---|---|---|
+| 0 | Always picks highest probability — fully deterministic | Regulated products, call summaries, compliance outputs |
+| 0.3 | Slight variation — consistent but not robotic | Internal tools, structured reports |
+| 0.7 | Balanced creativity and accuracy | General purpose assistants |
+| 1.0+ | High randomness — creative but unpredictable | Creative writing, brainstorming |
+
+> **PM Rule for regulated environments:** Always set temperature 
+> between 0 and 0.3. You need consistent, auditable, 
+> predictable outputs — not creative ones.
+
+---
+
+### Why Hallucination Happens — The Root Cause
+
+The model doesn't retrieve facts. It predicts probable tokens 
+based on patterns in training data.
+
+Prompt pushes model into unfamiliar territory
+
+↓
+
+Model has no reliable pattern to follow
+
+↓
+
+Still predicts the most probable next token
+
+↓
+
+Produces a confident, fluent, plausible sentence
+
+↓
+
+That is factually wrong
+
+This is not a bug — it is the fundamental nature of how 
+token prediction works.
+
+**Three root causes of hallucination:**
+
+**1. Knowledge gaps**
+The topic wasn't well represented in training data — 
+model fills the gap with plausible but invented content.
+
+**2. Prompt ambiguity**
+Vague or poorly structured prompts push the model toward 
+generic, sometimes incorrect responses.
+
+**3. Conflicting training data**
+If the internet contained contradictory information on a 
+topic, the model learned conflicting patterns — 
+and may produce either version.
+
+**Why this matters for regulated products:**
+
+A hallucinated call summary could:
+- Misrepresent what a customer said
+- Create incorrect resolution records
+- Expose the company to compliance and legal risk
+
+> This is why grounding (RAG), guardrails, system instructions 
+> with hard constraints, and human review layers are 
+> non-negotiable in financial services AI products.
+
 ---
 
 **Next: [04 — Embeddings & Models →](04-embeddings-models.md)**
