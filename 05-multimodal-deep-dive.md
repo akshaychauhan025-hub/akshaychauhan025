@@ -296,6 +296,40 @@ fraud evidence review.
 
 ---
 
+### Understanding FPS — Why It Matters for AI Products
+
+Video is not actually a moving image. It is thousands of 
+**static images (frames) played rapidly** one after another, 
+creating the illusion of motion.
+
+1 second of video at 30 FPS = 30 individual static images
+
+1 minute = 60 seconds
+
+60 seconds × 30 frames = 1,800 individual images
+
+Every frame is a separate image the model needs to process.
+
+---
+
+### FPS Standards
+
+| FPS | Use Case |
+|---|---|
+| 24 FPS | Movies — cinematic standard |
+| 30 FPS | Standard video — YouTube, WhatsApp, phone recordings |
+| 60 FPS | Gaming, sports, slow motion |
+| 120 FPS | High speed cameras, professional sports analysis |
+
+Higher FPS = smoother video = more frames = significantly 
+more expensive to process with AI.
+
+---
+
+### The Scale Problem at Enterprise Level
+
+---
+
 ## Key Takeaway for PMs
 
 Multimodal AI removes the constraint that AI only works with text. 
@@ -308,6 +342,124 @@ Before choosing a multimodal model, always ask:
 - Where will the model struggle with my specific data?
 - What's my human review layer for high-stakes decisions?
 - What does this cost at the scale I need?
+- WhatsApp — 100 million videos shared daily
+
+  
+
+Average length — 1 minute at 30 FPS
+100,000,000 videos
+
+× 1,800 frames per video
+
+= 180,000,000,000 frames per day
+180 billion frames to process — every single day
+
+Processing every frame with a large multimodal model is 
+**financially and computationally impossible** at this scale.
+
+---
+
+### How Enterprises Solve This
+
+**1. Frame Sampling**
+Instead of processing every frame, the model intelligently 
+selects key frames:
+
+1,800 frames
+
+↓
+
+Sample 1 frame every 30 frames
+
+↓
+
+60 key frames to process
+
+↓
+
+97% reduction in compute cost
+
+The model infers what happened between sampled frames 
+based on context.
+
+**2. Tiered Model Architecture**
+Not one large model for everything:
+
+Lightweight classifier first
+
+↓
+
+"Does this video need deep analysis?"
+
+↓
+
+No  → simple model handles it (cheap)
+Yes → full multimodal model (expensive)
+
+**3. Specialised Models Per Task**
+Content understanding  → Vision model
+
+Speech transcription   → Whisper
+
+Content moderation     → Specialised safety model
+
+Recommendations        → Ranking model
+
+Each model is small, fast, and optimised for one task — 
+far more efficient than one large model doing everything.
+
+---
+
+### Financial Services Application
+
+Customer submits a video of a disputed transaction 
+or fraudulent ATM interaction:
+
+Video received
+
+↓
+
+Frame sampling — extract key frames
+
+↓
+
+Vision model — identify relevant evidence
+
+(ATM screen, card, transaction details)
+
+↓
+
+Whisper — transcribe any audio
+
+↓
+
+LLM — synthesise evidence into structured fraud report
+
+↓
+
+Human review layer — agent validates before decision
+
+**Why not process every frame?**
+- A 2 minute ATM video at 30 FPS = 3,600 frames
+- Processing all frames = high cost, high latency
+- Key frames capture the evidence — the rest is context
+
+---
+
+### PM Question to Always Ask Vendors
+
+When a vendor says *"our model processes video"* — ask:
+
+- At what FPS does it sample?
+- What is the maximum video length supported?
+- What is the cost per minute of video processed?
+- What happens to frames between samples — are they ignored?
+- How does accuracy change at higher sampling rates?
+
+The answers reveal the real capability, cost envelope, 
+and limitations of their solution.
+
+---
 
 ---
 
