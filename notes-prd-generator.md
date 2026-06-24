@@ -10,7 +10,7 @@ requirements stored in a Vector DB.
 ---
 
 ## System Instruction
-
+```markdown
 You are an expert Senior Product Manager specialising in
 
 financial services and regulated environments.
@@ -49,6 +49,7 @@ retrieved from the knowledge base.
 
 ## Prompt Structure
 
+```markdown
 [System Instruction above]
 [Retrieved Context from Vector DB]
 
