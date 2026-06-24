@@ -329,38 +329,42 @@ In a regulated enterprise, you need approval from:
 
 **The honest framework:**
 
-Buy (third party API)          Build (self hosted / fine tune)
+Buy (third party API)           Build (self hosted / fine tune)
 
 ↓                                  ↓
 
-Faster to market               Full data control
+Faster to market                Full data control
 
-Lower upfront cost             Lower cost at scale
+Lower upfront cost              Lower cost at scale
 
-Vendor manages updates         You manage updates
+Vendor manages updates          You manage updates
 
-Data leaves environment        Data stays internal
+Data leaves environment         Data stays internal
 
-Vendor lock-in risk            Full flexibility
+Vendor lock-in risk             Full flexibility
 
-Best for: prototyping,         Best for: scale, compliance,
+Best for: prototyping,          Best for: scale, compliance,
 
-speed, low volume              regulated data, differentiation
-
+speed, low volume               regulated data, differentiation
+ 
 **Decision framework:**
 
 Is compliance the #1 concern?
 
 → Yes → Self hosted open source or enterprise cloud wrapper
+
 Is speed to market the #1 concern?
 
 → Yes → Buy (Azure OpenAI, AWS Bedrock)
+
 Is cost at scale the #1 concern?
 
 → Yes → Evaluate open source at your volume
+
 Do you need custom behaviour on proprietary data?
 
 → Yes → Fine tune open source model
+
 Are you prototyping?
 
 → Yes → Always buy first, build later
