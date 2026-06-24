@@ -445,17 +445,23 @@ decisions about model selection and architecture.
 
 Your application
         ↓
+
 Azure Private Network
         ↓
+
 Azure OpenAI / Azure AI Studio
         ↓
+
 Embedding model runs in your Azure region
         ↓
+
 Vector returned to your application
         ↓
+
 Stored in Azure Vector DB
 (Azure AI Search or PostgreSQL with pgvector)
         ↓
+
 Data never leaves your Azure environment
 
 ---
