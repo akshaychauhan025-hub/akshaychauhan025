@@ -443,26 +443,91 @@ lets you design better AI products, ask better
 questions of your engineering team, and make smarter 
 decisions about model selection and architecture.
 
+---
+
+## Azure AI Embedding Models — Enterprise Deployment
+
+For regulated enterprises, Microsoft Azure provides 
+embedding models within your private cloud environment — 
+data never leaves your Azure boundary.
+
+### Via Azure OpenAI
+
+Same OpenAI embedding models — hosted inside your 
+Azure environment, not on OpenAI servers.
+
+| Model | Dimensions | Best For |
+|---|---|---|
+| text-embedding-3-large | 3,072 | Highest accuracy, complex search |
+| text-embedding-3-small | 1,536 | Balanced cost and accuracy |
+| text-embedding-ada-002 | 1,536 | Legacy, widely deployed |
+
+### Via Azure AI Studio Model Catalogue
+
+Microsoft hosts third party embedding models 
+for additional flexibility:
+
+| Model | Provider | Best For |
+|---|---|---|
+| Cohere Embed v3 | Cohere | Multilingual, enterprise RAG |
+| E5 Large | Microsoft Research | Open source, strong multilingual |
+| BGE Large | BAAI | High accuracy, self hostable |
+| Jina Embeddings | Jina AI | Long documents, multilingual |
+
+### How It Works in Enterprise
+
 Your application
-        ↓
+
+↓
 
 Azure Private Network
-        ↓
+
+↓
 
 Azure OpenAI / Azure AI Studio
-        ↓
+
+↓
 
 Embedding model runs in your Azure region
-        ↓
+
+↓
 
 Vector returned to your application
-        ↓
 
-Stored in Azure Vector DB
-(Azure AI Search or PostgreSQL with pgvector)
-        ↓
+↓
+
+Stored in Azure native Vector DB
+
+↓
 
 Data never leaves your Azure environment
+
+### Azure Native Vector DB Options
+
+| Option | Best For |
+|---|---|
+| Azure AI Search | Enterprise search, RAG pipelines |
+| PostgreSQL + pgvector | Existing PostgreSQL users |
+| Azure Cosmos DB | Global scale, multi-region |
+
+### Compliance Advantage
+
+| Concern | Azure Solution |
+|---|---|
+| Data residency | Model runs in your chosen Azure region |
+| PII exposure | Data stays within Azure boundary |
+| Audit trail | Full logging via Azure Monitor |
+| Security | Microsoft enterprise security standards |
+| SLA | 99.9%+ uptime guaranteed |
+
+> **For regulated financial services** — Azure OpenAI 
+> embedding models are the recommended path. 
+> Same capability as OpenAI direct API, 
+> fully compliant, enterprise SLA guaranteed.
+
+---
+
+
 
 ---
 
