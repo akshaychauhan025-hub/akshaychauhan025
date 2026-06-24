@@ -83,6 +83,7 @@ Low scale (< 10K requests/day)
 → Cost manageable
 
 → No infrastructure needed
+
 Medium scale (10K - 1M requests/day)
 
 → Evaluate open source vs closed source cost
@@ -90,6 +91,7 @@ Medium scale (10K - 1M requests/day)
 → Consider reserved capacity with vendor
 
 → Start optimising prompt length
+
 High scale (> 1M requests/day)
 
 → Open source self hosted likely cheaper
