@@ -513,6 +513,31 @@ In regulated environments — compliance always wins.
 Build your model selection process around it, 
 not as an afterthought.
 
+**Human Review Layer**
+Human agents (fraud analysts, customer service staff) 
+validate AI outputs before decisions are made or 
+surfaces to customers. Critical in regulated environments 
+where AI output has financial or compliance consequence.
+
+**AI Agent Review Layer**
+A second AI model evaluates the first model's output — 
+checking for quality, accuracy, hallucinations, and 
+policy violations before surfacing to humans.
+
+AI Output
+
+↓
+
+AI Agent Review    ← catches errors at scale automatically
+
+↓
+
+Human Review       ← validates before consequential decisions
+
+↓
+
+Final Decision
+
 ---
 
 **Next: [07 — Reasoning Models →](07-reasoning-models.md)**
